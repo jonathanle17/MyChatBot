@@ -35,7 +35,7 @@ public class Roberto
         
         else if (findKeyword(statement, "My name is", 0) >= 0)
         {
-            response = transformIWantToStatement(statement);
+            response = transformMyNameIsStatement(statement);
         } 
         else if (findKeyword(statement, "hello") >= 0
                 || findKeyword(statement, "hey") >= 0
@@ -62,12 +62,12 @@ public class Roberto
         else if (findKeyword(statement, "planes") >= 0)
                 
         {
-            response = "I would ";
+            response = "I would rather not converse about that. ";
         }
         
         else if (findKeyword(statement, "famous") >= 0)
         {
-            response = "I am the first Latin American MLB player to reach 3,000 hits.";
+            response = getFamousResponse();
         }
 
         // Responses which require transformations
@@ -75,7 +75,7 @@ public class Roberto
         //  Part of student solution
         else if (findKeyword(statement, "I hit", 0) >= 0)
         {
-            response = transformIWantStatement(statement);
+            response = transformIHitStatement(statement);
         }
 
         else
@@ -117,7 +117,7 @@ public class Roberto
      * @param statement the user statement, assumed to contain "I want to"
      * @return the transformed statement
      */
-    private String transformIWantToStatement(String statement)
+    private String transformMyNameIsStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -140,7 +140,7 @@ public class Roberto
      * @param statement the user statement, assumed to contain "I want"
      * @return the transformed statement
      */
-    private String transformIWantStatement(String statement)
+    private String transformIHitStatement(String statement)
     {
         //  Remove the final period, if there is one
         statement = statement.trim();
@@ -284,5 +284,18 @@ public class Roberto
             "You don't say."
     };
     
+    private String getFamousResponse ()
+    {
+        Random f = new Random ();
+        return famousResponses [f.nextInt(famousResponses.length)];
+    }
+    
+    private String [] famousResponses = {"I recieved 12 Gold Glove Awards.",
+        "I am a 2 time World Series champion.",
+        "I won 4 National League batting titles.",
+        "I am the first Latin American MLB player to reach 3,000 hits.",
+    };
 }
+
+
    
